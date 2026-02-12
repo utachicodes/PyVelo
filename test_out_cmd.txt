@@ -1,0 +1,23 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.12, pytest-9.0.2, pluggy-1.6.0
+benchmark: 5.2.3 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: C:\Users\abdou\Downloads\PyVelo\pyvelo-main
+configfile: pyproject.toml
+plugins: anyio-4.12.1, benchmark-5.2.3, cov-7.0.0, mock-3.15.1
+collected 0 items / 1 error
+
+=================================== ERRORS ====================================
+____________________ ERROR collecting tests/test_client.py ____________________
+ImportError while importing test module 'C:\Users\abdou\Downloads\PyVelo\pyvelo-main\tests\test_client.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3312.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_client.py:12: in <module>
+    import cbor2
+E   ModuleNotFoundError: No module named 'cbor2'
+=========================== short test summary info ===========================
+ERROR tests/test_client.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+============================== 1 error in 0.13s ===============================
