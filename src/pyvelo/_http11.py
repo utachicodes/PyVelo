@@ -1,4 +1,5 @@
 from __future__ import annotations
+from ssl import SSLError
 
 import sys
 from collections.abc import Callable, Mapping, Sequence
@@ -50,10 +51,14 @@ class HTTP11Connection(HTTPConnection):
 
         self._connection.send(h11.ConnectionClosed())
         assert self._connection.our_state is h11.CLOSED
+
         try:
             await self.transport_stream.aclose()
         except BrokenResourceError:
             pass
+        except SSLError as exc:
+            if exc.reason != "APPLICATION_DATA_AFTER_CLOSE_NOTIFY":
+                raise
 
     @property
     def available_slots(self) -> int:

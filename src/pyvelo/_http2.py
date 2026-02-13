@@ -1,4 +1,5 @@
 from __future__ import annotations
+from ssl import SSLError
 
 import sys
 from collections.abc import Callable, Mapping, Sequence
@@ -104,10 +105,14 @@ class HTTP2Connection(HTTPConnection):
                 self._connection.close_connection()
                 await self._flush_outgoing_data()
             finally:
+
                 try:
                     await self.transport_stream.aclose()
                 except BrokenResourceError:
                     pass
+                except SSLError as exc:
+                    if exc.reason != "APPLICATION_DATA_AFTER_CLOSE_NOTIFY":
+                        raise
 
         async def close_request_stream(
             stream_id: int,

@@ -5,7 +5,7 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pyvelo"
+name = "pyvelo-http"
 description = "High-performance HTTP client library based on AnyIO"
 readme = "README.md"
 authors = []
@@ -35,7 +35,7 @@ dependencies = [
     "orjson >= 3.10.18", 
 ]
 
-version = "0.1.0"
+version = "0.1.1"
 
 [project.urls]
 # Documentation = "https://pyvelo.readthedocs.io/en/latest/" 

@@ -3,7 +3,7 @@
 [![Build Status](https://github.com/utachicodes/pyvelo/actions/workflows/test.yml/badge.svg)](https://github.com/utachicodes/pyvelo/actions/workflows/test.yml)
 [![Code Coverage](https://coveralls.io/repos/github/utachicodes/pyvelo/badge.svg?branch=master)](https://coveralls.io/github/utachicodes/pyvelo?branch=master)
 [![Documentation Status](https://readthedocs.org/projects/pyvelo/badge/?version=latest)](https://pyvelo.readthedocs.io/en/latest/?badge=latest)
-[![PyPI](https://img.shields.io/pypi/v/pyvelo.svg)](https://pypi.org/project/pyvelo/)
+[![PyPI](https://img.shields.io/pypi/v/pyvelo-http.svg)](https://pypi.org/project/pyvelo-http/)
 [![Supported Python Versions](https://img.shields.io/pypi/pyversions/pyvelo.svg)](https://pypi.org/project/pyvelo/)
 
 **PyVelo** is a next-generation, high-performance HTTP client library for Python, built on the robust [AnyIO](https://github.com/agronholm/anyio) framework. It is designed for speed, reliability, and ease of use in modern asynchronous applications.
