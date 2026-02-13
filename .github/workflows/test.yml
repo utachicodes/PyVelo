@@ -34,7 +34,7 @@ jobs:
     - name: Ensure pip >= v25.1
       run: python -m pip install "pip >= 25.1"
     - name: Install the project and its dependencies
-      run: pip install --group test -e .
+      run: pip install -e .[test]
     - name: Test with pytest
       run: coverage run -m pytest -v
       timeout-minutes: 5
@@ -59,7 +59,7 @@ jobs:
     - name: Ensure pip >= v25.1
       run: python -m pip install "pip >= 25.1"
     - name: Install the project and its dependencies
-      run: pip install --group doc -e .
+      run: pip install -e .[doc]
     - name: Build documentation
       run: sphinx-build -W docs build/sphinx
 
