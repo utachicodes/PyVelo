@@ -1,7 +1,6 @@
 # PyVelo
 
 [![Build Status](https://github.com/utachicodes/pyvelo/actions/workflows/test.yml/badge.svg)](https://github.com/utachicodes/pyvelo/actions/workflows/test.yml)
-[![Code Coverage](https://coveralls.io/repos/github/utachicodes/pyvelo/badge.svg?branch=main)](https://coveralls.io/github/utachicodes/pyvelo?branch=main)
 [![PyPI](https://img.shields.io/pypi/v/pyvelo-http.svg)](https://pypi.org/project/pyvelo-http/)
 [![Supported Python Versions](https://img.shields.io/pypi/pyversions/pyvelo-http.svg)](https://pypi.org/project/pyvelo-http/)
 
