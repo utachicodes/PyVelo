@@ -34,14 +34,17 @@ class ServerEventStream(ObjectReceiveStream[ServerEvent]):
 
         event = ServerEvent()
         for line in text.decode("utf-8", errors="replace").split("\r\n"):
-            key, value = line.split(":", 1)
+            if not line or line.startswith(":"):
+                continue
+
+            key, _, value = line.partition(":")
             value = value.lstrip()
             match key:
                 case "data":
                     if event.data is None:
                         event.data = value
                     else:
-                        event.data += value
+                        event.data += "\n" + value
                 case "id":
                     event.id = value
                 case "event":

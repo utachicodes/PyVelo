@@ -2,6 +2,7 @@ from __future__ import annotations
 from ssl import SSLError
 
 import sys
+from base64 import b64encode
 from collections.abc import Callable, Mapping, Sequence
 from functools import cached_property
 from random import randbytes
@@ -144,7 +145,7 @@ class HTTP11Connection(HTTPConnection):
                 "connection": "upgrade",
                 "origin": f"{self.scheme}://{self.host}{target.raw_path_qs}",
                 "sec-websocket-version": "13",
-                "sec-websocket-key": randbytes(16).hex(),
+                "sec-websocket-key": b64encode(randbytes(16)).decode("ascii"),
             }
         )
 

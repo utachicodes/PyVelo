@@ -104,7 +104,7 @@ class CBOR(ContentWrapper):
             from cbor2 import dumps
         except ModuleNotFoundError as exc:
             raise ImportError(
-                "cbor2 module not found - install with 'pip install pyvelo[cbor]'"
+                "cbor2 module not found - install with 'pip install pyvelo-http[cbor]'"
             ) from exc
 
         def dump(value: Any, wrapper: CBOR) -> bytes:
@@ -195,7 +195,7 @@ class Form(ContentWrapper):
         *,
         force_multipart: bool = False,
     ):
-        if force_multipart or all(isinstance(value, str) for value in fields.values()):
+        if not force_multipart and all(isinstance(value, str) for value in fields.values()):
             from urllib.parse import urlencode
 
             content_type = "application/x-www-form-urlencoded"

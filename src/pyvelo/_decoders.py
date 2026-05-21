@@ -43,17 +43,17 @@ class ZstdDecompressor(ContentDecoder, decoder="zstd"):
     def __init__(self, wrapped_stream: ByteReceiveStream, /):
         super().__init__(wrapped_stream)
         if sys.version_info >= (3, 14):
-            from compression.zstd import ZstdDecompressor
+            from compression.zstd import ZstdDecompressor as _ZstdDec
         else:
             try:
-                from zstandard import ZstdDecompressor
+                from zstandard import ZstdDecompressor as _ZstdDec
             except ModuleNotFoundError as exc:
                 raise ImportError(
                     "zstandard module not available; "
-                    "fix with 'pip install pyvelo[zstd]'"
+                    "fix with 'pip install pyvelo-http[zstd]'"
                 ) from exc
 
-            self._decompressor = ZstdDecompressor()
+        self._decompressor = _ZstdDec()
 
     async def receive(self, max_bytes: int = 65536) -> bytes:
         compressed = await self.wrapped_stream.receive(max_bytes)
@@ -89,7 +89,7 @@ class BrotliDecompressor(ContentDecoder, decoder="brotli"):
             except ModuleNotFoundError as exc:
                 raise ImportError(
                     "brotli module not available; "
-                    "fix with 'pip install pyvelo[brotli]'"
+                    "fix with 'pip install pyvelo-http[brotli]'"
                 ) from exc
 
         self._decompress = brotli.decompress

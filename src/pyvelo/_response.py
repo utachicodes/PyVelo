@@ -118,7 +118,7 @@ class HTTPResponse(ByteReceiveStream):
     @final
     def raise_for_status(self) -> Self:
         """
-        If the response contains a status code lower than 400, raise an exception.
+        If the response contains a status code of 400 or higher, raise an exception.
 
         :return: the response itself
         :raises HTTPStatusError: if the response contains a status code of 400 or higher

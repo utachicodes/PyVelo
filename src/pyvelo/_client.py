@@ -54,7 +54,7 @@ PoolKey: TypeAlias = tuple[str, str, int | None]
 
 _default_user_agent = "pyvelo"
 try:
-    _default_user_agent += f"/{version('pyvelo')}"
+    _default_user_agent += f"/{version('pyvelo-http')}"
 except PackageNotFoundError:
     pass
 
@@ -67,14 +67,13 @@ def url_to_connectable(
     if extra == "unix":
         remote = unquote(host)
     else:
-        if port:
-            port = port
-        elif scheme == "https":
-            port = 443
-        elif scheme == "http":
-            port = 80
-        else:
-            raise ValueError(f"unsupported scheme: {scheme}")
+        if port is None:
+            if scheme == "https":
+                port = 443
+            elif scheme == "http":
+                port = 80
+            else:
+                raise ValueError(f"unsupported scheme: {scheme}")
 
         remote = (host, port)
 
@@ -236,13 +235,6 @@ class HTTPClient(AsyncContextManagerMixin):
         # If the base headers contain cookies, parse them into Cookie instances
         for cookie_header in self.headers.popall("cookie", ()):
             self._cookies.append(Cookie.parse(cookie_header))
-
-        # self._content_decoders = {
-        #     decoder.name: decoder
-        #     for decoder in chain(registered_decoders.values(), content_decoders)
-        # }
-        # if decoder_names := ", ".join(self._content_decoders):
-        #     self.headers.add("accept-encoding", decoder_names)
 
         self._connection_pools: dict[PoolKey | None, ConnectionPool] = {}
 

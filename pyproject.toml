@@ -39,7 +39,7 @@ dependencies = [
     "orjson >= 3.10.18", 
 ]
 
-version = "0.1.3"
+version = "0.1.4"
 
 [project.urls]
 # Documentation = "https://pyvelo.readthedocs.io/en/latest/" 
@@ -67,7 +67,7 @@ zstd = [
 ]
 test = [
     "anyio[trio]",
-    "pyvelo[brotli,cbor,json,opentelemetry,zstd]",
+    "pyvelo-http[brotli,cbor,json,opentelemetry,zstd]",
     "coverage[toml] >= 7",
     "pytest >= 8.0",
     "sse-starlette >= 2.3.6",

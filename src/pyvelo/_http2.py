@@ -67,6 +67,7 @@ class HTTP2Connection(HTTPConnection):
         self._streams: dict[int, MemoryObjectSendStream[H2Event]] = {}
         self._outbound_window_events: dict[int, Event] = {}
         self._io_lock = Lock(fast_acquire=True)
+        self._can_send_event = Event()
         self._manage_cancel_scope: CancelScope | None = None
         self._manage_stopped_event = Event()
 
