@@ -20,7 +20,7 @@ project = "PyVelo"
 author = "Alex Grönholm"
 copyright = "2025, " + author
 
-v = parse(get_version("pyvelo"))
+v = parse(get_version("pyvelo-http"))
 version = v.base_version
 release = v.public
 
