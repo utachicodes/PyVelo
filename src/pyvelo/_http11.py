@@ -252,6 +252,9 @@ class HTTP11TunnelStream(ByteStream):
                 await self._transport_stream.aclose()
             except BrokenResourceError:
                 pass
+            except SSLError as exc:
+                if exc.reason != "APPLICATION_DATA_AFTER_CLOSE_NOTIFY":
+                    raise
 
     def __del__(self) -> None:
         if not self._closed:
